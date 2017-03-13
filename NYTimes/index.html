@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+<head>
+	<title>NYTimes News</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script type="text/javascript" src="outfile.js"></script>
+	<!--<script type="text/javascript" src="bundle.js"></script>-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<img class="name" src="nyt-logo.png">
+	
+	<div class="wrap" ng-controller="firstController">
+		
+		<div class= "col-lg-6 col-xs-12 news" ng-repeat='result in results| limitTo : filt '> 
+			<h3>{{result.title}}</h3>
+			<p class="abstr">{{result.abstract}}</p>
+			<img ng-src={{result.media[0]["media-metadata"][1].url}}>
+			<p><a href={{result.url}}>see more...</a></p>
+			<p class="writenBy"> Writen {{result.byline}}</p>
+						
+		</div>
+		
+		
+		
+		<div class=" addPost" id="showPost">
+			<h3>{{factor.postInf.title}}</h3>
+			<p class="abstr">{{factor.postInf.abstr}}</p>
+			<p><a href="{{factor.postInf.link}}">see more...</a></p>
+			<p class="writenBy">Writen By {{factor.postInf.writenBy}}</p>
+
+		</div>
+		<div class="filter" id="fil">
+    	<h3>Filter</h3>
+		<input type="text"  ng-model="filt" ></input>
+		</div>
+		
+	</div>
+
+	
+	<div class="wrap_form" ng-controller="fromForm">
+		
+		<button ng-click="click()" class="DipInj btn btn-default" >DependencyInjection</button>
+		<h3>Add your post</h3>
+
+		<form >
+		
+
+			<div class="form-group">
+				<label for="title">Title</label>
+				<input type="text" id="title" class="form-control" ng-model="post.title" placeholder="Title">
+			</div>
+			<div class="form-group">
+				<label for="abstr">Abstract</label>
+				<textarea ng-model="post.abstr" class="form-control" rows="5" placeholder="Abstract"></textarea>
+			</div>
+			<div class="form-group">
+				<label for="link">Link to the news</label>
+				<input type="url" id="link" class="form-control" ng-model="post.link" placeholder="Link">
+			</div>	
+			<div class="form-group">
+				<label for="WritenBy">Writen By</label>
+				<input type="text" id="writenBy" class="form-control" ng-model="post.writenBy" placeholder="Your name">
+				
+			</div>
+			
+			<button type="submit" ng-click="save(post)" class="btn btn-default" addpost>Add post</button>
+
+		</form>
+		
+				
+	</div>
+	
+</body>
+</html>
