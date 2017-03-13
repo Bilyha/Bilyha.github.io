@@ -33,8 +33,8 @@
               </div>
               <div ng-if="cardCtrl.editFlag">
                 <form ng-submit='cardCtrl.updateCard()'>
-                  <input type="text" is-editing="cardCtrl.editFlag" editing-Directive ng-model="cardCtrl.editingCard.description">
-                  <select class="" ng-model="cardCtrl.editingCard.list_id" ng-change="cardCtrl.updateCard()" ng-options="list.id as list.listName for list in listsCtrl.lists"></select>
+                  <input class="editcardInput" type="text" is-editing="cardCtrl.editFlag" editing-Directive ng-model="cardCtrl.editingCard.description">
+                  <select class="editcardSelect" ng-model="cardCtrl.editingCard.list_id" ng-change="cardCtrl.updateCard()" ng-options="list.id as list.listName for list in listsCtrl.lists"></select>
                 </form>
               </div>
             </div>

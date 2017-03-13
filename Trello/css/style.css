@@ -99,6 +99,15 @@ border: 1px solid black;
     margin: 10px;
 }
 
+.editcardSelect {
+  border-radius: 4px;
+    margin-top: 4px;
+}
+
+.editcardInput {
+  border-radius: 4px;
+}
+
 
 
 
