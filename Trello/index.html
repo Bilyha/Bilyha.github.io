@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>trello</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="Trello-128.png" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
     <link href="https://fonts.googleapis.com/css?family=Ranga" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"  rel="stylesheet">
@@ -14,6 +15,7 @@
       </header>
 
       <section class="basis" ng-controller="listsCtrl as listsCtrl" >
+
           <section class="lists" ng-repeat="list in listsCtrl.lists" ng-controller="listCtrl as listCtrl">
 
             <div class="listNameConteiner">
@@ -22,21 +24,22 @@
             </div>
 
             <div class="card" ng-repeat="card in listCtrl.getCards(list)" ng-controller="cardCtrl as cardCtrl">
+
               <div ng-if="!cardCtrl.editFlag">
                 <div class="cardIconWrapp">
                   <i class="fa fa-times" aria-hidden="true" ng-click="cardCtrl.deleteCard(card)"></i>
                   <i class="fa fa-pencil" aria-hidden="true" ng-click="cardCtrl.editCard(card)"></i>
                 </div>
                   <p>{{card.description}}</p>
-
-
               </div>
+
               <div ng-if="cardCtrl.editFlag">
                 <form ng-submit='cardCtrl.updateCard()'>
                   <input class="editcardInput" type="text" is-editing="cardCtrl.editFlag" editing-Directive ng-model="cardCtrl.editingCard.description">
                   <select class="editcardSelect" ng-model="cardCtrl.editingCard.list_id" ng-change="cardCtrl.updateCard()" ng-options="list.id as list.listName for list in listsCtrl.lists"></select>
                 </form>
               </div>
+
             </div>
 
             <section>
@@ -47,14 +50,14 @@
 
 
           </section>
+
           <section class="addList">
             <form class="addForm" ng-submit="listsCtrl.addList()">
               <input type="text" ng-model="listsCtrl.listName" ></input>
             </form>
           </section>
+
       </section>
-
-
 
       <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.js">  </script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>

@@ -1,19 +1,18 @@
 angular.module('app').controller('cardCtrl', function (cardFactory) {
-  this.deleteCard = function (card) {
-    cardFactory.deleteCard(card);
-  }
+  this.deleteCard = (card) => cardFactory.deleteCard(card);
 
   this.editFlag = false;
   this.editingCard = null;
 
-  this.editCard = function (card) {
+  this.editCard = (card) => {
     this.editFlag = true;
     this.editingCard = angular.copy(card);
-  }
-
-  this.updateCard = function () {
-    cardFactory.updateCard(this.editingCard);
-    this.editingCard = null;
-    this.editFlag = false;
   };
+
+  this.updateCard = () => {
+    cardFactory.updateCard(this.editingCard);
+      this.editingCard = null;
+      this.editFlag = false;
+  };
+
 });

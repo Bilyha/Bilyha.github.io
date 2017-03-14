@@ -16,11 +16,9 @@ angular.module('app').factory('listFactory', function () {
     }
   ];
 
-  service.getLists = function () {
-    return lists;
-  };
+  service.getLists = () =>  lists;
 
-  service.addList = function (listName) {
+  service.addList =  (listName) => {
     if (listName) {
 
     lists.push({
@@ -31,10 +29,7 @@ angular.module('app').factory('listFactory', function () {
   else alert ('Please, enter name of list');
   };
 
-  service.removeList = function (list) {
-    _.pull(lists, list);    // lodash function for removing list
-  }
-
+  service.removeList =  (list) =>  _.pull(lists, list);    // lodash function for removing list
 
   return service;
 });
