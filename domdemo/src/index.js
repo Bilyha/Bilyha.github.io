@@ -1,5 +1,3 @@
-import "./styles.css";
-
 const block2Div1 = document.querySelector("#block2Div1");
 const block2Div2 = document.querySelector("#block2Div2");
 const block2Div3 = document.querySelector("#block2Div3");
